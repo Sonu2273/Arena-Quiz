@@ -1,0 +1,198 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Default background is a solid color for the quiz */
+    background-color: #121212;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* This class is added by JavaScript to show the image on the welcome screen */
+body.welcome-active {
+    background-image: url('https://raw.githubusercontent.com/Motu9717/Arena-Quize/main/Nemesis_Background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Dark overlay is tied to the welcome screen's active class */
+body.welcome-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(30, 30, 60, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* Welcome Screen Styles */
+#welcome-screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #e94560;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+#welcome-screen p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+#start-quiz-btn {
+    background-color: #1DB954;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#start-quiz-btn:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+
+/* Quiz Container Styles */
+.quiz-container {
+    padding: 20px;
+}
+
+#question-text {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+    color: #FFFFFF;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: rgba(15, 52, 96, 0.8);
+    border: 2px solid #533483;
+    color: #FFFFFF;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover:not([disabled]) {
+    background-color: #533483;
+    border-color: #e94560;
+    transform: translateY(-3px);
+}
+
+.btn.correct {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.btn.wrong {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.next-btn {
+    background-color: #e94560;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.next-btn:hover {
+    background-color: #c43a51;
+    transform: scale(1.05);
+}
+
+.hide {
+    display: none;
+}
+
+.result-container {
+    text-align: center;
+}
+
+.result-container h2 {
+    font-size: 2.2rem;
+}
+
+/* Timer Style */
+#timer {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e94560;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    border: 3px solid #e94560;
+}
+
+/* "Already Played" Message Style */
+#already-played-msg {
+    margin-top: 20px;
+    color: #ffc107; /* A warning yellow color */
+    font-size: 1.1rem;
+}
+
+
+/* Responsive design */
+@media (min-width: 576px) {
+    .btn-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
